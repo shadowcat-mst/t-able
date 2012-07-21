@@ -5,9 +5,8 @@ use Test::More tests => 9;
 
 {
   package MyError;
-  use Moose;
+  use Moo;
   extends 'Throwable::Error';
-  no Moose;
 }
 
 sub throw_x {
