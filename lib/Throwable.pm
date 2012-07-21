@@ -35,8 +35,11 @@ has 'previous_exception' => (
   is       => 'ro',
   init_arg => undef,
   default  => Sub::Quote::quote_sub(q{
-    return unless defined $@ and (ref $@ or length $@);
-    return $@;
+    if (defined $@ and (ref $@ or length $@)) {
+      $@;
+    } else {
+      undef;
+    }
   }),
 );
 
